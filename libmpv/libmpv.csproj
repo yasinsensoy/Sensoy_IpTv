@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{62BA3CEB-2C3C-4316-BB19-8EFE78E3470D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>libmpv</RootNamespace>
+    <AssemblyName>libmpv</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\Şensoy İpTv\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API\Enums\MpvEndFileReason.cs" />
+    <Compile Include="API\Enums\MpvError.cs" />
+    <Compile Include="API\Enums\MpvEventID.cs" />
+    <Compile Include="API\Enums\MpvFormat.cs" />
+    <Compile Include="API\Enums\MpvLogLevel.cs" />
+    <Compile Include="API\EventArgs\MpvClientMessageEventArgs.cs" />
+    <Compile Include="API\EventArgs\MpvCommandReplyEventArgs.cs" />
+    <Compile Include="API\EventArgs\MpvEndFileEventArgs.cs" />
+    <Compile Include="API\EventArgs\MpvGetPropertyReplyEventArgs.cs" />
+    <Compile Include="API\EventArgs\MpvLogMessageEventArgs.cs" />
+    <Compile Include="API\EventArgs\MpvPropertyChangeEventArgs.cs" />
+    <Compile Include="API\EventArgs\MpvSetPropertyReplyEventArgs.cs" />
+    <Compile Include="API\Exceptions\MpvAPIException.cs" />
+    <Compile Include="API\IMpvEventLoop.cs" />
+    <Compile Include="API\IMpvFunctions.cs" />
+    <Compile Include="API\Interop\Mpv\MpvMarshal.cs" />
+    <Compile Include="API\Interop\Mpv\MpvStringMarshaler.cs" />
+    <Compile Include="API\Interop\Windows\WinFunctions.cs" />
+    <Compile Include="API\Mpv.cs" />
+    <Compile Include="API\MpvEventLoop.cs" />
+    <Compile Include="API\MpvEvents.cs" />
+    <Compile Include="API\MpvFunctionDeclarations.cs" />
+    <Compile Include="API\MpvFunctions.cs" />
+    <Compile Include="API\Structs\MpvEvent.cs" />
+    <Compile Include="API\Structs\MpvEventClientMessage.cs" />
+    <Compile Include="API\Structs\MpvEventEndFile.cs" />
+    <Compile Include="API\Structs\MpvEventProperty.cs" />
+    <Compile Include="API\Structs\MpvLogMessage.cs" />
+    <Compile Include="Guard.cs" />
+    <Compile Include="Player\Enums\TrackAddType.cs" />
+    <Compile Include="Player\Helpers\Extensions.cs" />
+    <Compile Include="Player\Enums\TextAlign.cs" />
+    <Compile Include="Player\EventArgs.cs" />
+    <Compile Include="Player\Types\ChapterList.cs" />
+    <Compile Include="Player\Types\DemuxerCacheState.cs" />
+    <Compile Include="Player\Types\Track.cs" />
+    <Compile Include="Player\Types\OsdOverlay.cs" />
+    <Compile Include="Player\IMpvPlayer.cs" />
+    <Compile Include="Player\Enums\KeepOpen.cs" />
+    <Compile Include="Player\Enums\InputMethod.cs" />
+    <Compile Include="Player\Enums\SeekMethod.cs" />
+    <Compile Include="Player\Enums\LoadMethod.cs" />
+    <Compile Include="Player\MpvPlayer.cs" />
+    <Compile Include="Player\MpvPlayerException.cs" />
+    <Compile Include="Player\Helpers\MpvPlayerHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Languages\Languages.csproj">
+      <Project>{da554d31-97a3-4db8-9202-571c5d5599e8}</Project>
+      <Name>Languages</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
